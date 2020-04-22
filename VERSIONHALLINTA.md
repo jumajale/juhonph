@@ -147,3 +147,24 @@ index 9c569e9..7a68579 100644
 </details>
 
 Git diff -komennolla voidaan näyttää tiedostokohtaiset muutokset kahden eri version välillä. Oletuksena pelkkä "git diff" komennon ajaminen näyttää muutokset edellisen commitin jälkeen. Ylläolevasta git diff -komennon outputista näen, että ero edellisen commitin ja nykyisen version välillä on "-37,3 +37,49". Tämä luetaan suomeksi näin: "Riviltä 37 alkaen on poistettu 3 riviä, riviltä 37 alkaen on lisätty 49 riviä". Seuraavissa riveissä näkyy tiedostoon tehdyt varsinaiset muutokset. Git diff -komennon avulla voidaan myös esimerkiksi näyttää ero kahden commitin tai branchin (haaran) välillä. Seuraavaksi käsitellään git blame.
+
+<details>
+  <summary>Klikkaa tästä nähdäksesi git blamen outputin</summary>
+
+```
+jupstejuho@jvl-830g5:~/Documents/palvelintenhallinta/juhonph$ git blame README.md
+^11d113d (Juho Lepp<C3><A4>nen 2020-04-22 23:39:55 +0300 1) # juhonph
+^11d113d (Juho Lepp<C3><A4>nen 2020-04-22 23:39:55 +0300 2) Palvelinten hallintaa Saltilla
+jupstejuho@jvl-830g5:~/Documents/palvelintenhallinta/juhonph$ git blame VERSIONHALLINTA.md
+d0e1ddda (Jupstejuho 2020-04-22 23:57:55 +0300   1) # 3. Versionhallinta
+d0e1ddda (Jupstejuho 2020-04-22 23:57:55 +0300   1) # 3. Versionhallinta
+d0e1ddda (Jupstejuho 2020-04-22 23:57:55 +0300   2) 
+7be31006 (Jupstejuho 2020-04-23 00:16:21 +0300   3) **a) Markdown**
+a19ce2ee (Jupstejuho 2020-04-23 00:18:24 +0300   4) 
+
+```
+**Omittasin outputista paljon turhaa tekstiä pois, koska tarkoituksena on vain lyhyesti näyttää esimerkki siitä, mitä git blame tekee**
+</details>
+
+Git blamen avulla voidaan tarkistaa yksittäiseen tiedostoon tehdyt muutokset commitin tarkkuudella niin, että voidaan nähdä myös, kuka kyseiset muutokset on tehnyt.
+
