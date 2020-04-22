@@ -1,0 +1,54 @@
+diff --git a/VERSIONHALLINTA.md b/VERSIONHALLINTA.md
+index 9c569e9..7a68579 100644
+--- a/VERSIONHALLINTA.md
++++ b/VERSIONHALLINTA.md
+@@ -37,3 +37,49 @@ git push
+ ~~~~
+ 
+ Gitin perusteet hallinnassa. Jos kaikki on yksinkertaista (esim yhden hengen projektissa), pelkästään näillä pärjää pitkälle.
++
++**d) Git log, git diff ja git blame**
++
++~~~~
++jupstejuho@jvl-830g5:~/Documents/palvelintenhallinta/juhonph$ git log
++commit fcdb28af6221f5f96c4692c6deec1a0909ddb02f (HEAD -> master, origin/master, origin/HEAD)
++Author: Jupstejuho <jupstejuho@hotmail.com>
++Date:   Thu Apr 23 00:44:40 2020 +0300
++
++    Complete step a) from homework, add screenshots
++
++commit b0f421169dad902d3449a9f08737ffe0224c1020
++Author: Jupstejuho <jupstejuho@hotmail.com>
++Date:   Thu Apr 23 00:22:53 2020 +0300
++
++    Fix code block
++
++commit a19ce2eed4116fb6d502eb58ed7ecb1f9f64e906
++Author: Jupstejuho <jupstejuho@hotmail.com>
++Date:   Thu Apr 23 00:18:24 2020 +0300
++
++    Add rivinvaihto
++
++commit 7be310068947e14f3b3fe04fc85227e3c61849e8
++Author: Jupstejuho <jupstejuho@hotmail.com>
++Date:   Thu Apr 23 00:16:21 2020 +0300
++
++    Remove initial crap from homework, test markdown formatting
++
++commit d0e1dddaf30e6497e7c92c7c5ebaa108c1b8dfb4
++Author: Jupstejuho <jupstejuho@hotmail.com>
++Date:   Wed Apr 22 23:57:55 2020 +0300
++
++    Add markdown file for homework
++
++commit 11d113da63fbf302b99dce84aad3709e8e79b3c9
++Author: Juho Lepp<C3><A4>nen <49460603+jumajale@users.noreply.github.com>
++Date:   Wed Apr 22 23:39:55 2020 +0300
++
++    Initial commit
++~~~~
++
++Git log -komento näyttää gitin lokikirjan; gitin tapauksessa tämä tarkoittaa siis historiaa repositoryyn tehdyistä commiteista. Tämä on sellaisenaan aina paikallista - mikäli työskentelisit vaikkapa kymmenhenkisessä projektissa, git log näyttäisi lokin commit-historiasta, joka on sinun koneellasi tiedossa. Jotta tähän päivittyy muiden tekemät muutokset, sinun tulee tehdä git pull ja vetää muutokset koneellesi, jolloin myös tiedostot päivittyvät. Git fetch -komento taasen ainoastaan tsekkaa muutosten tilan, mutta ei päivitä tiedostoja. Oikeissa ohjelmistoprojekteissa gittiä käytettäessä on ihan tyypillistä, että joudut välillä ratkomaan ristiriitaisuuksia palvelimen versionhallinnassa olevan version ja omalla koneellasi sijaitsevan version välillä.
++
++Yllä näkyvässä git log -komennon ajamisen tuloksessa commitin perässä näkyvä mystinen numerosarja on commitille annettava yksilöllinen id. Tämä on tärkeä, koska sen perusteella voidaan jäljittää tietty muutos yksittäiseen committiin tai vaikkapa kätevästi palauttaa versionhallinnan tiedostojen tila siihen, mitä se oli esim. 5 committia sitten. Author-kohta taas kertoo commitin pushaajan nimen ja sähköpostiosoitteen ja Date-kohta paljastaa, milloin commit on pushattu. Tämän jälkeen sisennettynä näkyvä teksti on commitin kuvaus, joka annetaan yksilöllisesti jokaiselle commitille. Jokaisella commitilla on oltava kuvaus ja mielestäni sen tulee olla mahdollisimman lyhyt ja ytimekäs. Esimerkiksi "fixed stuff" ei missään mimessä kelpaa commit-messageksi!
++
