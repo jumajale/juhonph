@@ -168,3 +168,9 @@ a19ce2ee (Jupstejuho 2020-04-23 00:18:24 +0300   4)
 
 Git blamen avulla voidaan tarkistaa yksittäiseen tiedostoon tehdyt muutokset commitin tarkkuudella niin, että voidaan nähdä myös, kuka kyseiset muutokset on tehnyt.
 
+**e) Git reset --hard**
+
+Apua, tuli tehtyä tyhmä muutos. Ylikirjoitin vahingossa koko tämän kotitehtävän sisällön niin, että koko sisältönä oli vain "MINÄ VAHINGOSSA KOKO TIEDOSTON, ONKO TÄMÄ PAHA?", jonka jälkeen lisäsin tiedoston versionhallintaan git add . komennolla. En kuitenkaan tehnyt committia, joten hei, tämähän on vielä fiksattavissa. Ajetaan komento "git reset --hard", jonka jälkeen versionhallinta palauttaa kaiken tekstini takaisin! Näppärää.
+
+![Git reset --hard](/images/24-gitresethard.png?raw=true "Git reset --hard")
+
