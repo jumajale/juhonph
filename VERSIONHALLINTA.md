@@ -85,7 +85,7 @@ Yllä näkyvässä git log -komennon ajamisen tuloksessa commitin perässä näk
 
 <details>
   <summary>Git diff -komennon outputti</summary>
-~~~~
+
 diff --git a/VERSIONHALLINTA.md b/VERSIONHALLINTA.md
 index 9c569e9..7a68579 100644
 --- a/VERSIONHALLINTA.md
@@ -140,7 +140,7 @@ index 9c569e9..7a68579 100644
 +
 +Yllä näkyvässä git log -komennon ajamisen tuloksessa commitin perässä näkyvä mystinen numerosarja on commitille annettava yksilöllinen id. Tämä on tärkeä, koska sen perusteella voidaan jäljittää tietty muutos yksittäiseen committiin tai vaikkapa kätevästi palauttaa versionhallinnan tiedostojen tila siihen, mitä se oli esim. 5 committia sitten. Author-kohta taas kertoo commitin pushaajan nimen ja sähköpostiosoitteen ja Date-kohta paljastaa, milloin commit on pushattu. Tämän jälkeen sisennettynä näkyvä teksti on commitin kuvaus, joka annetaan yksilöllisesti jokaiselle commitille. Jokaisella commitilla on oltava kuvaus ja mielestäni sen tulee olla mahdollisimman lyhyt ja ytimekäs. Esimerkiksi "fixed stuff" ei missään mimessä kelpaa commit-messageksi!
 +
-~~~~
+
 </details>
 
 Git diff -komennolla voidaan näyttää tiedostokohtaiset muutokset. Ylläolevasta git diff -komennon outputista näen, että ero versionhallinnassa olevan ja paikallisesti sijaitsevan VERSIONHALLINTA.md-tiedoston välillä on "-37,3 +37,49". Tämä luetaan suomeksi näin: "Riviltä 37 alkaen on poistettu 3 riviä, riviltä 37 alkaen on lisätty 49 riviä". Seuraavissa riveissä näkyy tiedostoon tehdyt varsinaiset muutokset.
