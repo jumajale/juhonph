@@ -1,6 +1,7 @@
 # 3. Versionhallinta
 
 **a) Markdown**
+
 Viikolla 16 Palvelinten hallinta -kurssilla oli aiheena versionhallinta. Tämän kotitehtävän raportti tehdään Markdown-formaatilla. GitHub muotoilee Markdownin nätin näköiseksi. Risuaita tekee otsikon, tyhjä rivi kappaleenvaihdon, sisennyksellä koodin muotoilu ja kuvatkin voi laittaa nätisti suoraan repositorystä. Alla koodi kuvan laittamiseen.
     ![Kuvan kuvaus](/relative/path/to/img.jpg?raw=true "Valinnainen otsikko")
 
