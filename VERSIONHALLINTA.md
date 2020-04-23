@@ -303,3 +303,4 @@ Testasin Saltin ajamien muutosten toimivuutta siirtymällä Xubuntu-machinella /
 Tämän jälkeen testasin vielä, onnistuiko Salt muuttamaan myös Git käyttäjän nimen ja sähköpostiosoitteen paikallisesti repositoryyn. Tein tämän luomalla uuden tiedoston, committaamalla ja pushaamalla sen, jonka jälkeen tarkistin git logilla, kuka näkyi uusimman commitin tekijänä. Great success!
 
 ![Testaus Salt-tilan ajamisen jälkeen](/images/26-testafterediting.png?raw=true "Testaus Salt-tilan ajamisen jälkeen")
+
