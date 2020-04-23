@@ -174,3 +174,132 @@ Apua, tuli tehtyä tyhmä muutos. Ylikirjoitin vahingossa koko tämän kotiteht�
 
 ![Git reset --hard](/images/24-gitresethard.png?raw=true "Git reset --hard")
 
+**f) Uusi salt-moduuli**
+
+Päätin tehdä salt-tilan, joka asentaa Gitin ja konfiguroi sen pitämään orjakoneella ajantasaisen version Git-repositorystäni /tmp/gittirepo hakemistossa. Lisäksi kyseiselle repolle asetetaan paikallisesti käyttäjän nimeksi Testi Kayttaja ja sähköpostiosoitteeksi testi@kayttaja.com. Päätin tehdä tämän perus package-file rakenteen sijaan hyödyntämällä Saltin sisäänrakennettua Gitin konffaamiseen tarkoitettua tilaa.
+
+Jälleen kerran aloitin kirjautumalla saltmaster-palvelimelle SSH-yhteydellä. Loin /srv/salt kansioon oman kansion gitsaltilla-nimistä tilaa varten. Kansion sisälle loin init.sls tiedoston, johon laitoin sisällöksi: 
+
+
+```
+git:
+  pkg.installed
+
+gitinkloonaus:
+  git.latest:
+    - name: https://github.com/jumajale/juhonph.git
+    - target: /tmp/gittirepo
+
+gitemail:
+  git.config_set:
+    - name: user.email
+    - value: testi@kayttaja.com
+    - repo: /tmp/gittirepo
+
+gitname:
+  git.config_set:
+    - name: user.name
+    - value: Testi Kayttaja
+    - repo: /tmp/gittirepo
+
+```
+
+Tämän jälkeen otin tilan käyttöön. Lopputulos vaikuttaisi onnistuneen.
+<details>
+  <summary>Outputti salt '*' state.apply gitsaltilla -komennon ajamisesta</summary>
+
+```
+root@jvl-saltmaster:~# salt '*' state.apply gitsaltilla
+uusixubuntu:
+----------
+          ID: git
+    Function: pkg.installed
+      Result: True
+     Comment: The following packages were installed/updated: git
+     Started: 00:10:09.583648
+    Duration: 6796.929 ms
+     Changes:   
+              ----------
+              git:
+                  ----------
+                  new:
+                      1:2.17.1-1ubuntu0.7
+                  old:
+              git-completion:
+                  ----------
+                  new:
+                      1
+                  old:
+              git-core:
+                  ----------
+                  new:
+                      1
+                  old:
+----------
+          ID: gitinkloonaus
+    Function: git.latest
+        Name: https://github.com/jumajale/juhonph.git
+      Result: True
+     Comment: https://github.com/jumajale/juhonph.git cloned to /tmp/gittirepo
+     Started: 00:10:16.403949
+    Duration: 2242.736 ms
+     Changes:   
+              ----------
+              new:
+                  https://github.com/jumajale/juhonph.git => /tmp/gittirepo
+              revision:
+                  ----------
+                  new:
+                      63b1d6960385074d7c4acc226323fc9e32d1fdab
+                  old:
+                      None
+----------
+          ID: gitemail
+    Function: git.config_set
+        Name: user.email
+      Result: True
+     Comment: 'user.email' was added as 'testi@kayttaja.com'
+     Started: 00:10:18.646903
+    Duration: 23.562 ms
+     Changes:   
+              ----------
+              user.email:
+                  ----------
+                  new:
+                      - testi@kayttaja.com
+                  old:
+                      None
+----------
+          ID: gitname
+    Function: git.config_set
+        Name: user.name
+      Result: True
+     Comment: 'user.name' was added as 'Testi Kayttaja'
+     Started: 00:10:18.670679
+    Duration: 18.499 ms
+     Changes:   
+              ----------
+              user.name:
+                  ----------
+                  new:
+                      - Testi Kayttaja
+                  old:
+                      None
+
+Summary for uusixubuntu
+------------
+Succeeded: 4 (changed=4)
+Failed:    0
+------------
+Total states run:     4
+Total run time:   9.082 s
+```
+</details>
+
+Testasin Saltin ajamien muutosten toimivuutta siirtymällä Xubuntu-machinella /tmp/gittirepo hakemistoon ja ajamalla git status -komennon. Onnistui.
+
+![Testaus Salt-tilan ajamisen jälkeen](/images/25-testaftersaltapply.png?raw=true "Testaus Salt-tilan ajamisen jälkeen")
+
+Tämän jälkeen testasin vielä, onnistuiko Salt muuttamaan myös Git käyttäjän nimen ja sähköpostiosoitteen paikallisesti repositoryyn. Tein tämän luomalla uuden tiedoston, committaamalla ja pushaamalla sen, jonka jälkeen tarkistin git logilla, kuka näkyi uusimman commitin tekijänä. Great success!
+
+![Testaus Salt-tilan ajamisen jälkeen](/images/26-testafterediting.png?raw=true "Testaus Salt-tilan ajamisen jälkeen")
